@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "test-d8f8c": {
+      "hosting": {
+        "test": [
+          "test-d8f8c"
+        ]
+      }
+    }
+  }
+}
