@@ -1,15 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
-  selector: 'page-title',
-  templateUrl: './page-title.component.html',
-  styleUrls: ['./page-title.component.scss']
+    selector: 'page-title',
+    templateUrl: './page-title.component.html',
+    styleUrls: ['./page-title.component.scss']
 })
 export class PageTitleComponent implements OnInit {
 
-  constructor() { }
+    constructor() { }
 
-  ngOnInit(): void {
-  }
+    @Input('title') title: string;
+    @Input('showBackArrow') showBackArrow: string;
+
+    @Output('onGoBack') onGoBack: EventEmitter<boolean> = new EventEmitter<boolean>()
+
+    ngOnInit(): void {
+    }
 
 }

@@ -3,10 +3,12 @@ import { MatButtonModule } from "@angular/material/button"
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { LoadingService } from './services/loading.service';
 
 import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
+import { PageTitleComponent } from './components/page-title/page-title.component';
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 
 @NgModule({
@@ -14,15 +16,18 @@ import { ConfirmationDialogComponent } from './components/confirmation-dialog/co
         MatButtonModule,
         CommonModule,
         MatCardModule,
-        MatIconModule
+        MatIconModule,
+        MatToolbarModule
     ],
     declarations: [
         ConfirmationDialogComponent,
-        NavigationBarComponent
+        NavigationBarComponent,
+        PageTitleComponent
     ],
     exports: [
         ConfirmationDialogComponent,
-        NavigationBarComponent
+        NavigationBarComponent,
+        PageTitleComponent
     ],
     providers: [LoadingService]
 })

@@ -9,6 +9,8 @@ export class MainPageComponent implements OnInit {
 
     constructor() { }
 
+    showBackArrow: boolean = false;
+
     ngOnInit(): void {
     }
 
