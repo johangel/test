@@ -4,15 +4,12 @@ import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatInputModule } from '@angular/material/input';
 
 import { LoadingService } from './services/loading.service';
 
 import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
 import { PageTitleComponent } from './components/page-title/page-title.component';
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
-import { ImageFileInputComponent } from './components/image-file-input/image-file-input.component';
-import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     imports: [
@@ -20,22 +17,17 @@ import { ReactiveFormsModule } from '@angular/forms';
         CommonModule,
         MatCardModule,
         MatIconModule,
-        MatToolbarModule,
-        MatInputModule,
-        ReactiveFormsModule
+        MatToolbarModule
     ],
     declarations: [
         ConfirmationDialogComponent,
         NavigationBarComponent,
-        PageTitleComponent,
-        ImageFileInputComponent,
+        PageTitleComponent
     ],
     exports: [
         ConfirmationDialogComponent,
         NavigationBarComponent,
-        PageTitleComponent,
-        ImageFileInputComponent,
-
+        PageTitleComponent
     ],
     providers: [LoadingService]
 })

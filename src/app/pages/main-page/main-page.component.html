@@ -1,33 +1,6 @@
 <div class="main-page-component">
     <page-title
-        (onGoBack)="handleBack()"
         [showBackArrow]="showBackArrow"
-        [title]="pageTitle"
+        [title]="'Productos'"
     ></page-title>
-
-    <div class="content-section">
-        <product-list
-            (onView)="viewProduct($event, false)"
-            (onEdit)="viewProduct($event, true)"
-            *ngIf="activeComponent === activeComponentsContants.LIST"
-            (onCreateProduct)="showCreateProductForm()"
-            [products]="products"
-        >
-        </product-list>
-
-        <new-product-form
-            (onCreateProduct)="postProduct($event)"
-            *ngIf="activeComponent === activeComponentsContants.CREATE"
-        ></new-product-form>
-
-        <single-product
-            (onEditProduct)="putProduct($event)"
-            *ngIf="
-                activeComponent === activeComponentsContants.DETAIL && product
-            "
-            [product]="product"
-            [canEdit]="canEdit"
-        >
-        </single-product>
-    </div>
 </div>
