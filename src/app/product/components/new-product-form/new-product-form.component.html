@@ -1,1 +1,84 @@
-<p>new-product-form works!</p>
+<div class="new-product-form">
+    <form
+        [formGroup]="newProductForm"
+        class="create-product-form mat-elevation-z4"
+    >
+        <div class="left-section">
+            <image-file-input
+                (onPictureChanged)="handlePicture($event)"
+            ></image-file-input>
+        </div>
+
+        <div class="right-section">
+            <mat-form-field appearance="outline">
+                <mat-label>Nombre de producto</mat-label>
+                <input formControlName="name" matInput />
+                <mat-error
+                    *ngIf="newProductForm.get('name').hasError('required')"
+                >
+                    Nombre es <strong>requerida</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Descripcion de producto</mat-label>
+                <textarea
+                    matInput
+                    [matTextareaAutosize]="true"
+                    formControlName="description"
+                ></textarea>
+                <mat-error
+                    *ngIf="
+                        newProductForm.get('description').hasError('required')
+                    "
+                >
+                    Descripcion es <strong>requerida</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Categorio de producto</mat-label>
+                <input formControlName="category" matInput />
+                <mat-error
+                    *ngIf="newProductForm.get('category').hasError('required')"
+                >
+                    Categoria es <strong>requerida</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <div class="two-columns">
+                <mat-form-field appearance="outline">
+                    <mat-label>precio de producto</mat-label>
+                    <input formControlName="price" matInput />
+                    <mat-error
+                        *ngIf="newProductForm.get('price').hasError('required')"
+                    >
+                        Nombre es <strong>requerida</strong>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Cantidad de producto en almacen</mat-label>
+                    <input formControlName="stock" matInput />
+                    <mat-error
+                        *ngIf="newProductForm.get('stock').hasError('required')"
+                    >
+                        Nombre es <strong>requerida</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="action-section">
+                <button color="warn" mat-flat-button>Limpiar formulario</button>
+                <button
+                    (click)="submitForm()"
+                    color="primary"
+                    [disabled]="newProductForm.invalid"
+                    mat-flat-button
+                >
+                    Guardar producto
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

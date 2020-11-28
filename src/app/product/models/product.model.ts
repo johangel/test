@@ -1,15 +1,19 @@
 export interface Picture {
-    id: string,
-    url: string,
+    id?: string,
+    url: string | ArrayBuffer,
     name: string
 }
 
-export interface Product {
+export interface Product extends CreateProductForm {
     id: string,
+}
+
+export interface CreateProductForm {
     name: string,
     description: string,
-    price: string,
+    price: number,
     picture: Picture,
-    publishDate: string,
-    stock: number
+    publishDate: Date,
+    stock: number,
+    category: string
 }

@@ -1,1 +1,31 @@
-<p>product-list works!</p>
+<div class="product-list-component">
+    <div class="action-section">
+        <mat-form-field appearance="outline" class="example-form-field">
+            <mat-label>Filtrar productos</mat-label>
+            <input
+                matInput
+                type="text"
+                (keyUp)="filterProducts($event.value)"
+                [(ngModel)]="searchValue"
+            />
+            <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+        <button
+            mat-raised-button
+            (click)="onCreateProduct.emit(true)"
+            color="primary"
+        >
+            Crear Producto
+        </button>
+    </div>
+
+    <div class="products-grid">
+        <product-card
+            (onView)="onView.emit($event)"
+            (onEdit)="onEdit.emit($event)"
+            *ngFor="let product of products"
+            [product]="product"
+        >
+        </product-card>
+    </div>
+</div>

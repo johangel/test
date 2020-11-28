@@ -1,0 +1,22 @@
+.product-card-component {
+    &.mat-card {
+        display: grid;
+        height: calc(100% - 32px);
+        .mat-card-header {
+            .mat-card-title {
+                font-size: 16px;
+            }
+        }
+
+        .mat-card-content {
+            .text-price {
+                font-size: 24px;
+                font-weight: 600;
+            }
+            .text-description {
+                max-height: 100px;
+                overflow: hidden;
+            }
+        }
+    }
+}

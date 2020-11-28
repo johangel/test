@@ -5,21 +5,18 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
-import { ProductModule } from './product/product.module';
+import { PagesModule } from './pages/pages.module';
 import { UXModule } from './ux/ux.module';
-
-import { MainPageComponent } from './pages/main-page/main-page.component';
 
 @NgModule({
     declarations: [
         AppComponent,
-        MainPageComponent
     ],
     imports: [
         BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
-        ProductModule,
+        PagesModule,
         UXModule
     ],
     providers: [],
