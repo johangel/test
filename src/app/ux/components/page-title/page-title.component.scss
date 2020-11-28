@@ -1,0 +1,10 @@
+.page-title-component {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 15px;
+    align-items: center;
+    h2 {
+        margin: 0;
+        font-size: 30px;
+    }
+}
