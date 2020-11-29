@@ -22,6 +22,7 @@ export class ProductListComponent implements OnInit {
     constructor() {
 
     }
+
     ngOnInit(): void {
         this.filteredProducts = this.products;
         console.log(this.products)

@@ -1,0 +1,19 @@
+.snack-error {
+    &.mat-snack-bar-container {
+        color: $error;
+        background: $error-background;
+        .mat-button-wrapper {
+            color: black;
+        }
+    }
+}
+
+.snack-success {
+    &.mat-snack-bar-container {
+        color: $success;
+        background: $success-background;
+        .mat-button-wrapper {
+            color: black;
+        }
+    }
+}

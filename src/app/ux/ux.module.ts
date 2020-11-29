@@ -5,6 +5,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { LoadingService } from './services/loading.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -26,6 +27,7 @@ import { LoadingComponent } from './components/loading/loading.component';
         MatInputModule,
         MatProgressSpinnerModule,
         ReactiveFormsModule,
+        MatSnackBarModule
     ],
     declarations: [
         NavigationBarComponent,
