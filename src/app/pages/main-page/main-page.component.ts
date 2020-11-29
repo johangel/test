@@ -1,9 +1,10 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { EditProductForm, Product } from 'src/app/product/models/product.model';
 import { ACTIVE_COMPONENTS_CONSTANTS } from './../constants/pages.constants';
 import { ProductModule } from './../../product/product.module';
 import { ProductsService } from './../../product/services/products.service';
 import { LoadingService } from './../../ux/services/loading.service';
+import { ProductListComponent } from 'src/app/product/components/product-list/product-list.component';
 
 @Component({
     selector: 'main-page',
@@ -25,13 +26,14 @@ export class MainPageComponent implements OnInit {
 
     product: Product = null;
 
+    products: Product[] = [];
 
-    products: Product[] = []
+    @ViewChild('productList') productList: ProductListComponent;
 
     ngOnInit(): void {
         this.productsService.getProducts().subscribe(products => {
             this.products = products
-            console.log(this.products)
+            this.productList.setProducts(products);
         })
     }
 
