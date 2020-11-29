@@ -1,3 +1,5 @@
+@import "../../styles/variables.scss";
+
 .page-title-component {
     display: grid;
     grid-template-columns: auto 1fr;
@@ -6,5 +8,14 @@
     h2 {
         margin: 0;
         font-size: 30px;
+    }
+
+    @media (max-width: $small) {
+        grid-template-columns: 1fr;
+
+        h2 {
+            margin: 0;
+            font-size: 24px;
+        }
     }
 }

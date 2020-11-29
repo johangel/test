@@ -7,6 +7,13 @@
         padding: 15px;
         border-radius: 5px;
 
+        .left-section {
+            .image-input-file-component {
+                img {
+                    max-height: 350px;
+                }
+            }
+        }
         .right-section {
             display: grid;
 

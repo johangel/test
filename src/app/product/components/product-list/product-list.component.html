@@ -5,7 +5,7 @@
             <input
                 matInput
                 type="text"
-                (keyup)="filterProducts($event.target.value)"
+                (keyup)="filterProducts()"
                 [(ngModel)]="searchValue"
                 placeholder="Filtrar por precio, categoria, nombre, etc"
             />
@@ -20,7 +20,7 @@
         </button>
     </div>
 
-    <div class="products-grid">
+    <div class="products-grid" *ngIf="filteredProducts[0]">
         <product-card
             (onView)="onView.emit($event)"
             (onEdit)="onEdit.emit($event)"

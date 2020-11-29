@@ -7,11 +7,10 @@
 
     <div class="content-section">
         <product-list
+            #productList
             (onView)="viewProduct($event, false)"
             (onEdit)="viewProduct($event, true)"
-            *ngIf="
-                activeComponent === activeComponentsContants.LIST && products[0]
-            "
+            *ngIf="activeComponent === activeComponentsContants.LIST"
             (onCreateProduct)="showCreateProductForm()"
             [products]="products"
         >

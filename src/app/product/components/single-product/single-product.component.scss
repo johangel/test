@@ -23,6 +23,13 @@
                 column-gap: 20px;
             }
         }
+        .left-section {
+            .image-input-file-component {
+                img {
+                    max-height: 350px;
+                }
+            }
+        }
 
         .action-section {
             text-align: right;

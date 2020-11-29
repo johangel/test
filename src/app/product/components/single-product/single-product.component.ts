@@ -61,6 +61,11 @@ export class SingleProductComponent implements OnInit {
         this.pictureUrl = pictureUrl;
     }
 
+    cleanForm() {
+        this.pictureUrl = null;
+        this.editProductForm.reset()
+    }
+
     submitForm() {
         this.onEditProduct.emit({
             product: {

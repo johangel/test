@@ -12,7 +12,7 @@ export class ProductListComponent implements OnInit {
     @Input('products') products: Product[];
     filteredProducts: Product[];
 
-    searchValue: string;
+    searchValue: string = '';
 
     @Output('onView') onView: EventEmitter<string> = new EventEmitter<string>();
     @Output('onEdit') onEdit: EventEmitter<string> = new EventEmitter<string>();
@@ -28,9 +28,13 @@ export class ProductListComponent implements OnInit {
         console.log(this.products)
     }
 
-    filterProducts(word: string) {
-        console.log(word)
-        this.filteredProducts = this.products.filter(product => JSON.stringify(product).includes(word))
+    filterProducts() {
+        this.filteredProducts = this.products.filter(product => JSON.stringify(product).includes(this.searchValue))
+    }
+
+    setProducts(products: Product[]) {
+        this.products = products;
+        this.filteredProducts = this.products.filter(product => JSON.stringify(product).includes(this.searchValue))
     }
 
 }

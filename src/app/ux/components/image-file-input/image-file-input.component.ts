@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
+import { IMAGE_EXTENSIONS } from './../../constants/images-files.constants';
 
 @Component({
     selector: 'image-file-input',
@@ -7,12 +9,11 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class ImageFileInputComponent implements OnInit {
 
-    constructor() { }
+    constructor(public snackBar: MatSnackBar) { }
 
     @Input('pictureUrl') pictureUrl: string;
     @Input('canEdit') canEdit: boolean;
 
-    input;
     @Output('onPictureChanged') onPictureChanged: EventEmitter<string> = new EventEmitter<string>()
 
     ngOnInit(): void {
@@ -22,15 +23,28 @@ export class ImageFileInputComponent implements OnInit {
         let reader = new FileReader();
         console.log(event.target.files[0])
         reader.onload = fileReader => {
-            this.pictureUrl = fileReader.target.result.toString();
-            // this.picture = {
-            //     ...this.picture,
-            //     name: event.target.files[0].name,
-            //     url: fileReader.target.result
-            // }
-            this.onPictureChanged.emit(this.pictureUrl);
+
+            if (IMAGE_EXTENSIONS.some(extension => extension === this.getExtension(event.target.files[0].name))) {
+                this.pictureUrl = fileReader.target.result.toString();
+                this.onPictureChanged.emit(this.pictureUrl);
+            } else {
+
+                let horizontalPosition: MatSnackBarHorizontalPosition = "right";
+                let verticalPosition: MatSnackBarVerticalPosition = "top";
+
+                this.snackBar.open('Formato de archivo no aceptado', 'cerrar', {
+                    duration: 2000,
+                    horizontalPosition,
+                    verticalPosition,
+                    panelClass: 'snack-error'
+                })
+            }
         }
         reader.readAsDataURL(event.target.files[0])
+    }
+
+    getExtension(name: string) {
+        return name.split('.')[1];
     }
 
 }

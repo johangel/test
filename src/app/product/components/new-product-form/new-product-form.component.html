@@ -56,27 +56,29 @@
             <div class="two-columns">
                 <mat-form-field appearance="outline">
                     <mat-label>precio de producto</mat-label>
-                    <input formControlName="price" matInput />
+                    <input type="number" formControlName="price" matInput />
                     <mat-error
                         *ngIf="newProductForm.get('price').hasError('required')"
                     >
-                        Nombre es <strong>requerida</strong>
+                        Precio es <strong>requerido</strong>
                     </mat-error>
                 </mat-form-field>
 
                 <mat-form-field appearance="outline">
                     <mat-label>Cantidad de producto en almacen</mat-label>
-                    <input formControlName="stock" matInput />
+                    <input type="number" formControlName="stock" matInput />
                     <mat-error
                         *ngIf="newProductForm.get('stock').hasError('required')"
                     >
-                        Nombre es <strong>requerida</strong>
+                        Cantidad es <strong>requerida</strong>
                     </mat-error>
                 </mat-form-field>
             </div>
 
             <div class="action-section">
-                <button color="warn" mat-flat-button>Limpiar formulario</button>
+                <button (click)="cleanForm()" color="primary" mat-button>
+                    Limpiar formulario
+                </button>
                 <button
                     (click)="submitForm()"
                     color="primary"

@@ -34,7 +34,7 @@
                         editProductForm.get('description').hasError('required')
                     "
                 >
-                    Nombre es <strong>requerida</strong>
+                    Descripción es <strong>requerida</strong>
                 </mat-error>
             </mat-form-field>
 
@@ -57,25 +57,25 @@
             <div class="two-columns">
                 <mat-form-field appearance="outline">
                     <mat-label>precio de producto</mat-label>
-                    <input formControlName="price" matInput />
+                    <input type="number" formControlName="price" matInput />
                     <mat-error
                         *ngIf="
                             editProductForm.get('price').hasError('required')
                         "
                     >
-                        Nombre es <strong>requerida</strong>
+                        Precio es <strong>requerido</strong>
                     </mat-error>
                 </mat-form-field>
 
                 <mat-form-field appearance="outline">
                     <mat-label>Cantidad de producto en almacen</mat-label>
-                    <input formControlName="stock" matInput />
+                    <input type="number" formControlName="stock" matInput />
                     <mat-error
                         *ngIf="
                             editProductForm.get('stock').hasError('required')
                         "
                     >
-                        Nombre es <strong>requerida</strong>
+                        Cantidad es <strong>requerida</strong>
                     </mat-error>
                 </mat-form-field>
             </div>
@@ -84,7 +84,9 @@
                 <button (click)="deleteProduct()" mat-mini-fab color="warn">
                     <mat-icon>delete</mat-icon>
                 </button>
-                <button color="primary" mat-button>Limpiar formulario</button>
+                <button (click)="cleanForm()" color="primary" mat-button>
+                    Limpiar formulario
+                </button>
                 <button
                     (click)="submitForm()"
                     color="primary"
