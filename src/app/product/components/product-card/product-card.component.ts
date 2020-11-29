@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { Product } from "../../models/product.model";
+import { AngularFireStorage } from '@angular/fire/storage';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
     selector: 'product-card',
@@ -14,9 +16,15 @@ export class ProductCardComponent implements OnInit {
     @Output('onView') onView: EventEmitter<string> = new EventEmitter<string>()
     @Output('onEdit') onEdit: EventEmitter<string> = new EventEmitter<string>()
 
-    constructor() { }
+    pictureUrl: string;
+
+    constructor(public fireStorage: AngularFireStorage) { }
 
     ngOnInit(): void {
+        this.fireStorage.ref(this.product.pictureRef).getDownloadURL().subscribe(url => {
+            this.pictureUrl = url;
+        })
+
     }
 
 }

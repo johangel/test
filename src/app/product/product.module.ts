@@ -9,6 +9,8 @@ import { CommonModule } from '@angular/common';
 import { UXModule } from './../ux/ux.module';
 import { ShortTextPipe } from './helpers/short-text.pipe';
 
+import { ProductsService } from './services/products.service';
+
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { SingleProductComponent } from './components/single-product/single-product.component';
@@ -34,7 +36,9 @@ import { NewProductFormComponent } from './components/new-product-form/new-produ
         SingleProductComponent,
         NewProductFormComponent
     ],
-    providers: [],
+    providers: [
+        ProductsService
+    ],
     exports: [
         ProductCardComponent,
         ProductListComponent,

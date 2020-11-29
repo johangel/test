@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Picture, CreateProductForm } from './../../models/product.model';
+import { Product } from '../../models/product.model';
 
 @Component({
     selector: 'new-product-form',
@@ -11,31 +11,28 @@ export class NewProductFormComponent implements OnInit {
 
     constructor() { }
 
-    @Output('onCreateProduct') onCreateProduct: EventEmitter<CreateProductForm> = new EventEmitter<CreateProductForm>()
+    @Output('onCreateProduct') onCreateProduct: EventEmitter<Product> = new EventEmitter<Product>()
 
     ngOnInit(): void {
     }
 
-    picture: Picture;
+    pictureRef: string;
 
     newProductForm: FormGroup = new FormGroup({
         name: new FormControl('', Validators.required),
         description: new FormControl('', Validators.required),
-        pictureUrl: new FormControl('', Validators.required),
+        pictureRef: new FormControl('', Validators.required),
         price: new FormControl('', Validators.required),
         stock: new FormControl('', Validators.required),
         category: new FormControl('', Validators.required),
     })
 
-    handlePicture(picture: Picture) {
-        this.newProductForm.get('pictureUrl').setValue(picture.url);
-        this.picture = picture;
+    handlePicture(pictureRef: string) {
+        this.newProductForm.get('pictureRef').setValue(pictureRef);
+        this.pictureRef = pictureRef;
     }
 
     submitForm() {
-        this.onCreateProduct.emit({
-            ...this.newProductForm.value,
-            picture: this.picture
-        })
+        this.onCreateProduct.emit(this.newProductForm.value)
     }
 }

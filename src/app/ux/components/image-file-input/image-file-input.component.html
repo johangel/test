@@ -1,18 +1,17 @@
 <div class="image-input-file-component">
     <img
         [src]="
-            picture
-                ? picture.url
-                : 'https://increasify.com.au/wp-content/uploads/2016/08/default-image.png'
+            pictureUrl ||
+            'https://increasify.com.au/wp-content/uploads/2016/08/default-image.png'
         "
     />
     <div
         (click)="inputFile.click(); $event.stopPropagation()"
         class="input-section"
     >
-        <p>{{ picture?.name || "Debe Subir una imagen" }}</p>
+        <p *ngIf="!pictureUrl">Seleccionar una imagen para el producto</p>
         <button mat-mini-fab color="primary">
-            <mat-icon>{{ picture ? "edit" : "attachment" }}</mat-icon>
+            <mat-icon>{{ pictureUrl ? "edit" : "attachment" }}</mat-icon>
         </button>
         <input #inputFile (change)="handleFile($event)" type="file" />
     </div>

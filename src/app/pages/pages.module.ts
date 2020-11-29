@@ -9,6 +9,9 @@ import { ProductModule } from './../product/product.module';
 import { UXModule } from './../ux/ux.module';
 
 import { MainPageComponent } from './main-page/main-page.component';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from './../../environments/environment';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 @NgModule({
     declarations: [
@@ -22,7 +25,9 @@ import { MainPageComponent } from './main-page/main-page.component';
         MatButtonModule,
         CommonModule,
         ProductModule,
-        UXModule
+        UXModule,
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFirestoreModule
     ],
     exports: [
         MainPageComponent

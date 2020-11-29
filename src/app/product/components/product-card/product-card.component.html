@@ -4,11 +4,7 @@
         <mat-card-title>{{ product.name }}</mat-card-title>
         <mat-card-subtitle>{{ product.category }}</mat-card-subtitle>
     </mat-card-header>
-    <img
-        mat-card-image
-        [src]="product.picture.url"
-        alt="{{ product.picture.name }}"
-    />
+    <img mat-card-image [src]="pictureUrl" alt="{{ product.pictureRef }}" />
     <mat-card-content>
         <p class="text-price">{{ product.price | currency: "CLP" }}</p>
         <p class="text-description">

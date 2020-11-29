@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { CreateProductForm, Picture, Product } from './../../models/product.model';
+import { Product } from './../../models/product.model';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { environment } from './../../../../environments/environment.prod';
 
 @Component({
     selector: 'single-product',
@@ -12,18 +13,19 @@ export class SingleProductComponent implements OnInit {
     editProductForm: FormGroup = new FormGroup({
         name: new FormControl('', Validators.required),
         description: new FormControl('', Validators.required),
-        pictureUrl: new FormControl('', Validators.required),
         price: new FormControl('', Validators.required),
         stock: new FormControl('', Validators.required),
         category: new FormControl('', Validators.required),
+        pictureUrl: new FormControl('', Validators.required),
     })
 
     @Input('product') product: Product;
     @Input('canEdit') canEdit: boolean;
-    @Output('onEditProduct') onEditProduct: EventEmitter<CreateProductForm> = new EventEmitter<CreateProductForm>()
+    @Output('onEditProduct') onEditProduct: EventEmitter<Product> = new EventEmitter<Product>();
+
+    pictureUrl: string;
 
     constructor() { }
-
 
     ngOnInit(): void {
         this.setForm();
@@ -35,22 +37,23 @@ export class SingleProductComponent implements OnInit {
         this.editProductForm.get('price').setValue(this.product.price)
         this.editProductForm.get('stock').setValue(this.product.stock)
         this.editProductForm.get('category').setValue(this.product.category)
-        this.editProductForm.get('pictureUrl').setValue(this.product.picture.url)
+        this.editProductForm.get('pictureUrl').setValue(this.product.pictureRef)
 
         if (!this.canEdit) {
             this.editProductForm.disable();
         }
+
+        this.pictureUrl = this.product.pictureRef
     }
 
-    handlePicture(picture: Picture) {
-        this.editProductForm.get('pictureUrl').setValue(picture.url);
-        this.product.picture = picture;
+
+    handlePicture(pictureUrl: string) {
+        this.pictureUrl = pictureUrl;
     }
 
     submitForm() {
         this.onEditProduct.emit({
-            ...this.editProductForm.value,
-            picture: this.product.picture
+            ...this.editProductForm.value
         })
     }
 
