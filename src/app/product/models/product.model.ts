@@ -8,3 +8,8 @@ export interface Product {
     stock: number,
     category: string
 }
+
+export interface EditProductForm {
+    product: Product,
+    pictureUrl: string
+}

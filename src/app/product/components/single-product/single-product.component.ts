@@ -1,13 +1,15 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Product } from './../../models/product.model';
+import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import { EditProductForm, Product } from './../../models/product.model';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { environment } from './../../../../environments/environment.prod';
 import { AngularFireStorage } from '@angular/fire/storage';
+import { PRODUCTS_CATEGORIES } from './../../constants/products-categories.constant';
 
 @Component({
     selector: 'single-product',
     templateUrl: './single-product.component.html',
     styleUrls: ['./single-product.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class SingleProductComponent implements OnInit {
 
@@ -17,14 +19,15 @@ export class SingleProductComponent implements OnInit {
         price: new FormControl('', Validators.required),
         stock: new FormControl('', Validators.required),
         category: new FormControl('', Validators.required),
-        pictureUrl: new FormControl('', Validators.required),
+        pictureRef: new FormControl('', Validators.required),
     })
 
     @Input('product') product: Product;
     @Input('canEdit') canEdit: boolean;
-    @Output('onEditProduct') onEditProduct: EventEmitter<Product> = new EventEmitter<Product>();
+    @Output('onEditProduct') onEditProduct: EventEmitter<EditProductForm> = new EventEmitter<EditProductForm>();
 
     pictureUrl: string;
+    categories = PRODUCTS_CATEGORIES;
 
     constructor(public fireStorage: AngularFireStorage) { }
 
@@ -42,7 +45,7 @@ export class SingleProductComponent implements OnInit {
         this.editProductForm.get('price').setValue(this.product.price)
         this.editProductForm.get('stock').setValue(this.product.stock)
         this.editProductForm.get('category').setValue(this.product.category)
-        this.editProductForm.get('pictureUrl').setValue(this.product.pictureRef)
+        this.editProductForm.get('pictureRef').setValue(this.product.pictureRef)
 
         if (!this.canEdit) {
             this.editProductForm.disable();
@@ -57,7 +60,11 @@ export class SingleProductComponent implements OnInit {
 
     submitForm() {
         this.onEditProduct.emit({
-            ...this.editProductForm.value
+            product: {
+                id: this.product.id,
+                ...this.editProductForm.value
+            },
+            pictureUrl: this.pictureUrl
         })
     }
 

@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Product } from '../../models/product.model';
+import { PRODUCTS_CATEGORIES } from './../../constants/products-categories.constant';
 
 @Component({
     selector: 'new-product-form',
@@ -15,6 +16,8 @@ export class NewProductFormComponent implements OnInit {
 
     ngOnInit(): void {
     }
+
+    categories = PRODUCTS_CATEGORIES;
 
     pictureRef: string;
 

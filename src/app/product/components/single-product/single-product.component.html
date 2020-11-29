@@ -28,7 +28,6 @@
                     matInput
                     [matTextareaAutosize]="true"
                     formControlName="description"
-                    placeholder="Ex. It makes me feel..."
                 ></textarea>
                 <mat-error
                     *ngIf="
@@ -41,7 +40,13 @@
 
             <mat-form-field appearance="outline">
                 <mat-label>Categorio de producto</mat-label>
-                <input formControlName="category" matInput />
+                <mat-select formControlName="category">
+                    <mat-option
+                        *ngFor="let category of categories"
+                        [value]="category"
+                        >{{ category }}</mat-option
+                    >
+                </mat-select>
                 <mat-error
                     *ngIf="editProductForm.get('category').hasError('required')"
                 >

@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Product } from '../models/product.model';
 import { Subscribable } from 'rxjs';
 import { environment } from './../../../environments/environment';
+import { EditProductForm } from 'src/app/product/models/product.model';
 
 @Injectable({
     providedIn: 'root'
@@ -25,14 +26,31 @@ export class ProductsService {
         return this.productsCollection.add(product)
     }
 
+    async putProduct(editProductForm: EditProductForm): Promise<any> {
+        let imageId: string = editProductForm.product.pictureRef;
+        if (!editProductForm.pictureUrl.includes(editProductForm.product.pictureRef)) {
+            await this.firestorage.ref(editProductForm.product.pictureRef).delete().toPromise().then(res => {
+                console.log(res);
+            })
+            imageId = await this.saveFile(editProductForm.pictureUrl);
+        }
+
+        return this.productsCollection.doc(editProductForm.product.id).set(
+            {
+                ...editProductForm.product,
+                pictureRef: imageId
+            })
+
+    }
+
     async saveFile(pictureRef: string): Promise<string> {
-        let id = new Date().valueOf() + "-pic";
-        await this.firestorage.ref(id).putString(pictureRef.split(',')[1], 'base64', { contentType: 'image/jpg', }).then(res => {
+        let imageId = new Date().valueOf() + "-pic";
+        await this.firestorage.ref(imageId).putString(pictureRef.split(',')[1], 'base64', { contentType: 'image/jpg', }).then(res => {
             if (!res) {
-                id = null;
+                imageId = null;
             }
         })
-        return id;
+        return imageId;
     }
 
 }

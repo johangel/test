@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { Product } from 'src/app/product/models/product.model';
+import { EditProductForm, Product } from 'src/app/product/models/product.model';
 import { ACTIVE_COMPONENTS_CONSTANTS } from './../constants/pages.constants';
 import { ProductModule } from './../../product/product.module';
 import { ProductsService } from './../../product/services/products.service';
@@ -66,7 +66,7 @@ export class MainPageComponent implements OnInit {
     // },
     // ]
 
-    products: Product[]
+    products: Product[] = []
 
     ngOnInit(): void {
         this.productsService.getProducts().subscribe(products => {
@@ -113,10 +113,17 @@ export class MainPageComponent implements OnInit {
         }
     }
 
-    // putProduct(product: Product) {
-    //     console.log(product, 'product')
-    //     this.products = this.products.map(productIndex => (productIndex.id === product.id) ? product : productIndex);
-    //     this.handleBack();
-    // }
+    putProduct(productForm: EditProductForm) {
+        this.loadingService.updateLoading(true)
+        this.productsService.putProduct(productForm).then(res => {
+            this.loadingService.updateLoading(false)
+            console.log(res, ' se subio')
+            this.handleBack();
+        }, err => {
+            console.log(err, ' no se subio')
+
+        })
+        // this.products = this.products.map(productIndex => (productIndex.id === product.id) ? product : productIndex);
+    }
 
 }

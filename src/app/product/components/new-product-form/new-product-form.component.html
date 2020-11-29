@@ -5,6 +5,7 @@
     >
         <div class="left-section">
             <image-file-input
+                [canEdit]="true"
                 (onPictureChanged)="handlePicture($event)"
             ></image-file-input>
         </div>
@@ -38,7 +39,13 @@
 
             <mat-form-field appearance="outline">
                 <mat-label>Categorio de producto</mat-label>
-                <input formControlName="category" matInput />
+                <mat-select formControlName="category">
+                    <mat-option
+                        *ngFor="let category of categories"
+                        [value]="category"
+                        >{{ category }}</mat-option
+                    >
+                </mat-select>
                 <mat-error
                     *ngIf="newProductForm.get('category').hasError('required')"
                 >
