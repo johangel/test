@@ -1,4 +1,5 @@
 export const IMAGE_EXTENSIONS = [
     'jpg',
-    'png'
+    'png',
+    'webp'
 ]
