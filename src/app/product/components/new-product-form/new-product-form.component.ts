@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Product } from '../../models/product.model';
 import { PRODUCTS_CATEGORIES } from './../../constants/products-categories.constant';
@@ -6,7 +6,8 @@ import { PRODUCTS_CATEGORIES } from './../../constants/products-categories.const
 @Component({
     selector: 'new-product-form',
     templateUrl: './new-product-form.component.html',
-    styleUrls: ['./new-product-form.component.scss']
+    styleUrls: ['./new-product-form.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class NewProductFormComponent implements OnInit {
 
