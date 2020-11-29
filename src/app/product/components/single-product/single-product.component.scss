@@ -9,7 +9,8 @@
         .right-section {
             display: grid;
 
-            .mat-input-element:disabled {
+            .mat-input-element:disabled,
+            .mat-select-disabled .mat-select-value {
                 color: black;
             }
 
@@ -24,9 +25,7 @@
         .action-section {
             text-align: right;
             button {
-                &:last-of-type {
-                    margin-left: 10px;
-                }
+                margin-left: 10px;
             }
         }
     }

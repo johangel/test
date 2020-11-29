@@ -5,7 +5,8 @@
     >
         <div class="left-section">
             <image-file-input
-                [picture]="product.picture"
+                [canEdit]="canEdit"
+                [pictureUrl]="pictureUrl"
                 (onPictureChanged)="handlePicture($event)"
             ></image-file-input>
         </div>
@@ -27,7 +28,6 @@
                     matInput
                     [matTextareaAutosize]="true"
                     formControlName="description"
-                    placeholder="Ex. It makes me feel..."
                 ></textarea>
                 <mat-error
                     *ngIf="
@@ -40,7 +40,13 @@
 
             <mat-form-field appearance="outline">
                 <mat-label>Categorio de producto</mat-label>
-                <input formControlName="category" matInput />
+                <mat-select formControlName="category">
+                    <mat-option
+                        *ngFor="let category of categories"
+                        [value]="category"
+                        >{{ category }}</mat-option
+                    >
+                </mat-select>
                 <mat-error
                     *ngIf="editProductForm.get('category').hasError('required')"
                 >
@@ -75,7 +81,10 @@
             </div>
 
             <div class="action-section" *ngIf="canEdit">
-                <button color="warn" mat-flat-button>Limpiar formulario</button>
+                <button (click)="deleteProduct()" mat-mini-fab color="warn">
+                    <mat-icon>delete</mat-icon>
+                </button>
+                <button color="primary" mat-button>Limpiar formulario</button>
                 <button
                     (click)="submitForm()"
                     color="primary"

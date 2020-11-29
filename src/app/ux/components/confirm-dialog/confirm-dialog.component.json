@@ -1,0 +1,8 @@
+{
+  "title": "Confirmation Dialog",
+  "question": "Are you sure?",
+  "buttons": {
+    "decline": "No",
+    "confirm": "Yes"
+  }
+}

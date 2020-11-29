@@ -8,22 +8,29 @@ import { Product } from '../../models/product.model';
 })
 export class ProductListComponent implements OnInit {
 
-    constructor() { }
 
     @Input('products') products: Product[];
+    filteredProducts: Product[];
 
     searchValue: string;
 
-    @Output('onView') onView: EventEmitter<string> = new EventEmitter<string>()
-    @Output('onEdit') onEdit: EventEmitter<string> = new EventEmitter<string>()
+    @Output('onView') onView: EventEmitter<string> = new EventEmitter<string>();
+    @Output('onEdit') onEdit: EventEmitter<string> = new EventEmitter<string>();
 
-    @Output('onCreateProduct') onCreateProduct: EventEmitter<boolean> = new EventEmitter<boolean>()
+    @Output('onCreateProduct') onCreateProduct: EventEmitter<boolean> = new EventEmitter<boolean>();
+
+    constructor() {
+
+    }
 
     ngOnInit(): void {
+        this.filteredProducts = this.products;
+        console.log(this.products)
     }
 
     filterProducts(word: string) {
-
+        console.log(word)
+        this.filteredProducts = this.products.filter(product => JSON.stringify(product).includes(word))
     }
 
 }

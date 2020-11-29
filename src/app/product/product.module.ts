@@ -5,9 +5,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
-
+import { MatSelectModule } from '@angular/material/select';
 import { UXModule } from './../ux/ux.module';
+import { MatDialogModule } from '@angular/material/dialog';
+
 import { ShortTextPipe } from './helpers/short-text.pipe';
+import { ProductsService } from './services/products.service';
 
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
@@ -25,7 +28,9 @@ import { NewProductFormComponent } from './components/new-product-form/new-produ
         FormsModule,
         MatInputModule,
         MatButtonModule,
-        UXModule
+        UXModule,
+        MatSelectModule,
+        MatDialogModule
     ],
     declarations: [
         ShortTextPipe,
@@ -34,7 +39,9 @@ import { NewProductFormComponent } from './components/new-product-form/new-produ
         SingleProductComponent,
         NewProductFormComponent
     ],
-    providers: [],
+    providers: [
+        ProductsService
+    ],
     exports: [
         ProductCardComponent,
         ProductListComponent,

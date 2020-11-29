@@ -1,0 +1,45 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            <h2
+                [innerHTML]="
+                    data.info && data.info.title
+                        ? data.info.title
+                        : 'Modal de confirmación'
+                "
+            ></h2>
+        </mat-card-title>
+        <button (click)="decline()" class="dialog-close-button" mat-icon-button>
+            <mat-icon>clear</mat-icon>
+        </button>
+    </mat-card-header>
+    <mat-card-content [ngClass]="{ 'with-image': data.showConfirmImage }">
+        <mat-icon *ngIf="data.showConfirmImage">contact_support</mat-icon>
+        <div
+            class="dialog-question"
+            [innerHTML]="
+                data.info && data.info.question
+                    ? data.info.question
+                    : '¿Seguro que desea confirmar la accion?'
+            "
+        ></div>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button color="warn" (click)="decline()">
+            <mat-icon *ngIf="data.showButtonIcons">clear</mat-icon>
+            {{
+                data.info && data.info.declineButtonText
+                    ? data.info.declineButtonText
+                    : "Cancelar"
+            }}
+        </button>
+        <button mat-raised-button color="primary" (click)="confirm()">
+            <mat-icon *ngIf="data.showButtonIcons">done</mat-icon
+            >{{
+                data.info && data.info.confirmButtonText
+                    ? data.info.confirmButtonText
+                    : "Confirmar"
+            }}
+        </button>
+    </mat-card-actions>
+</mat-card>

@@ -9,7 +9,9 @@
         <product-list
             (onView)="viewProduct($event, false)"
             (onEdit)="viewProduct($event, true)"
-            *ngIf="activeComponent === activeComponentsContants.LIST"
+            *ngIf="
+                activeComponent === activeComponentsContants.LIST && products[0]
+            "
             (onCreateProduct)="showCreateProductForm()"
             [products]="products"
         >
@@ -21,6 +23,7 @@
         ></new-product-form>
 
         <single-product
+            (onDelete)="deleteProduct($event)"
             (onEditProduct)="putProduct($event)"
             *ngIf="
                 activeComponent === activeComponentsContants.DETAIL && product
@@ -31,3 +34,4 @@
         </single-product>
     </div>
 </div>
+<loading></loading>

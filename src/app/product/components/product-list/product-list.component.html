@@ -5,8 +5,9 @@
             <input
                 matInput
                 type="text"
-                (keyUp)="filterProducts($event.value)"
+                (keyup)="filterProducts($event.target.value)"
                 [(ngModel)]="searchValue"
+                placeholder="Filtrar por precio, categoria, nombre, etc"
             />
             <mat-icon matSuffix>search</mat-icon>
         </mat-form-field>
@@ -23,7 +24,7 @@
         <product-card
             (onView)="onView.emit($event)"
             (onEdit)="onEdit.emit($event)"
-            *ngFor="let product of products"
+            *ngFor="let product of filteredProducts"
             [product]="product"
         >
         </product-card>
