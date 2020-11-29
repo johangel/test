@@ -25,46 +25,6 @@ export class MainPageComponent implements OnInit {
 
     product: Product = null;
 
-    // products: Product[] = [{
-    //     // id: '3',
-    //     name: 'Bota Hombre Cuero Borcego Botita Briganti Zapato',
-    //     description: `Tan solo una marca como Briganti puede ofrecer cada temporada colecciones inspiradas en las últimas tendencias, además de la auténtica artesanía zapatera perfeccionada a lo largo de los años. Como líderes en calzado de cuero, Briganti, diseña, innova y produce una gran variedad de zapatos premium empleando los mejores materiales argentinos, siempre teniendo presente los valores del armado artesanal.`,
-    //     price: 1000,
-    //     publishDate: new Date(),
-    //     stock: 29,
-    //     picture: 'https://http2.mlstatic.com/D_Q_NP_671248-MLA44027165990_112020-AB.webp',
-
-    //     category: 'technology'
-    // },
-    // {
-    //     // id: '2',
-    //     name: 'Bota Hombre Cuero Borcego Botita Briganti Zapato',
-    //     description: `Tan solo una marca como Briganti puede ofrecer cada temporada colecciones inspiradas en las últimas tendencias, además de la auténtica artesanía zapatera perfeccionada a lo largo de los años. Como líderes en calzado de cuero, Briganti, diseña, innova y produce una gran variedad de zapatos premium empleando los mejores materiales argentinos, siempre teniendo presente los valores del armado artesanal.`,
-    //     price: 1000,
-    //     publishDate: new Date(),
-    //     stock: 29,
-    //     picture: {
-    //         id: '123123',
-    //         url: 'https://http2.mlstatic.com/D_Q_NP_671248-MLA44027165990_112020-AB.webp',
-    //         name: 'zapatoru.url'
-    //     },
-    //     category: 'technology'
-    // },
-    // {
-    //     // id: '1',
-    //     name: 'Bota Hombre Cuero Borcego Botita Briganti Zapato',
-    //     description: `Tan solo una marca como Briganti puede ofrecer cada temporada colecciones inspiradas en las últimas tendencias, además de la auténtica artesanía zapatera perfeccionada a lo largo de los años. Como líderes en calzado de cuero, Briganti, diseña, innova y produce una gran variedad de zapatos premium empleando los mejores materiales argentinos, siempre teniendo presente los valores del armado artesanal.`,
-    //     price: 1000,
-    //     publishDate: new Date(),
-    //     stock: 29,
-    //     picture: {
-    //         id: '123123',
-    //         url: 'https://http2.mlstatic.com/D_Q_NP_671248-MLA44027165990_112020-AB.webp',
-    //         name: 'zapatoru.url'
-    //     },
-    //     category: 'technology'
-    // },
-    // ]
 
     products: Product[] = []
 
