@@ -23,6 +23,7 @@
         ></new-product-form>
 
         <single-product
+            (onDelete)="deleteProduct($event)"
             (onEditProduct)="putProduct($event)"
             *ngIf="
                 activeComponent === activeComponentsContants.DETAIL && product

@@ -1,0 +1,9 @@
+@import "~@angular/material/theming";
+@import "./variables.scss";
+@include mat-core();
+
+@import "../components/confirm-dialog/confirm-dialog.component.scss";
+
+@mixin theme-mixin($theme) {
+    @include confirm-dialog-component($theme);
+}

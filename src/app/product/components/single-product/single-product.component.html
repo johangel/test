@@ -81,7 +81,10 @@
             </div>
 
             <div class="action-section" *ngIf="canEdit">
-                <button color="warn" mat-flat-button>Limpiar formulario</button>
+                <button (click)="deleteProduct()" mat-mini-fab color="warn">
+                    <mat-icon>delete</mat-icon>
+                </button>
+                <button color="primary" mat-button>Limpiar formulario</button>
                 <button
                     (click)="submitForm()"
                     color="primary"

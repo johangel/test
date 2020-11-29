@@ -7,8 +7,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { MatSelectModule } from '@angular/material/select';
 import { UXModule } from './../ux/ux.module';
-import { ShortTextPipe } from './helpers/short-text.pipe';
+import { MatDialogModule } from '@angular/material/dialog';
 
+import { ShortTextPipe } from './helpers/short-text.pipe';
 import { ProductsService } from './services/products.service';
 
 import { ProductCardComponent } from './components/product-card/product-card.component';
@@ -28,7 +29,8 @@ import { NewProductFormComponent } from './components/new-product-form/new-produ
         MatInputModule,
         MatButtonModule,
         UXModule,
-        MatSelectModule
+        MatSelectModule,
+        MatDialogModule
     ],
     declarations: [
         ShortTextPipe,

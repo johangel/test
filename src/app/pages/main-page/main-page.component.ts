@@ -123,7 +123,16 @@ export class MainPageComponent implements OnInit {
             console.log(err, ' no se subio')
 
         })
-        // this.products = this.products.map(productIndex => (productIndex.id === product.id) ? product : productIndex);
+    }
+
+    deleteProduct(product: Product) {
+        this.loadingService.updateLoading(true)
+        this.productsService.deleteProduct(product).then(res => {
+            this.loadingService.updateLoading(false)
+            this.handleBack();
+        }, err => {
+            this.loadingService.updateLoading(false)
+        })
     }
 
 }

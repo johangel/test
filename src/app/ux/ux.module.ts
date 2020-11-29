@@ -9,9 +9,9 @@ import { MatInputModule } from '@angular/material/input';
 import { LoadingService } from './services/loading.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
 import { PageTitleComponent } from './components/page-title/page-title.component';
-import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 import { ImageFileInputComponent } from './components/image-file-input/image-file-input.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoadingComponent } from './components/loading/loading.component';
@@ -28,16 +28,16 @@ import { LoadingComponent } from './components/loading/loading.component';
         ReactiveFormsModule,
     ],
     declarations: [
-        ConfirmationDialogComponent,
         NavigationBarComponent,
         PageTitleComponent,
         ImageFileInputComponent,
         LoadingComponent,
+        ConfirmDialogComponent,
     ],
     exports: [
-        ConfirmationDialogComponent,
         NavigationBarComponent,
         PageTitleComponent,
+        ConfirmDialogComponent,
         ImageFileInputComponent,
         LoadingComponent
     ],

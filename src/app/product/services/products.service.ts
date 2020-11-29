@@ -53,4 +53,9 @@ export class ProductsService {
         return imageId;
     }
 
+    async deleteProduct(product: Product): Promise<any> {
+        await this.productsCollection.doc(product.id).delete()
+        return this.firestorage.ref(product.pictureRef).delete();
+    }
+
 }

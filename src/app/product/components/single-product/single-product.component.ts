@@ -1,9 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { EditProductForm, Product } from './../../models/product.model';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { environment } from './../../../../environments/environment.prod';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { PRODUCTS_CATEGORIES } from './../../constants/products-categories.constant';
+import { ConfirmDialogComponent, DialogData } from './../../../ux/components/confirm-dialog/confirm-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
     selector: 'single-product',
@@ -24,12 +25,15 @@ export class SingleProductComponent implements OnInit {
 
     @Input('product') product: Product;
     @Input('canEdit') canEdit: boolean;
+
     @Output('onEditProduct') onEditProduct: EventEmitter<EditProductForm> = new EventEmitter<EditProductForm>();
+    @Output('onDelete') onDelete: EventEmitter<Product> = new EventEmitter<Product>();
 
     pictureUrl: string;
     categories = PRODUCTS_CATEGORIES;
 
-    constructor(public fireStorage: AngularFireStorage) { }
+    constructor(public fireStorage: AngularFireStorage,
+        public dialog: MatDialog) { }
 
     ngOnInit(): void {
         this.setForm();
@@ -53,7 +57,6 @@ export class SingleProductComponent implements OnInit {
 
     }
 
-
     handlePicture(pictureUrl: string) {
         this.pictureUrl = pictureUrl;
     }
@@ -65,6 +68,30 @@ export class SingleProductComponent implements OnInit {
                 ...this.editProductForm.value
             },
             pictureUrl: this.pictureUrl
+        })
+    }
+
+    deleteProduct() {
+        const data: DialogData = {
+            info: {
+                title: 'Dialogo de confirmación',
+                question: '¿Seguro que deseas eliminar esta producto?',
+                declineButtonText: 'cancelar',
+                confirmButtonText: 'confirmar'
+            },
+            showConfirmImage: true,
+        }
+        const dialogRef = this.dialog.open(
+            ConfirmDialogComponent,
+            {
+                data
+            }
+        );
+
+        dialogRef.afterClosed().subscribe(res => {
+            if (res) {
+                this.onDelete.emit(this.product)
+            }
         })
     }
 
