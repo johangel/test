@@ -66,11 +66,12 @@ export class MainPageComponent implements OnInit {
     // },
     // ]
 
-    products: ProductModule[]
+    products: Product[]
 
     ngOnInit(): void {
         this.productsService.getProducts().subscribe(products => {
             this.products = products
+            console.log(this.products)
         })
     }
 
@@ -87,13 +88,13 @@ export class MainPageComponent implements OnInit {
     }
 
 
-    // viewProduct(productId, canEdit) {
-    //     this.product = this.products.find(product => product.id === productId);
-    //     this.canEdit = canEdit;
-    //     this.pageTitle = this.product.name;
-    //     this.showBackArrow = true;
-    //     this.activeComponent = this.activeComponentsContants.DETAIL;
-    // }
+    viewProduct(productId, canEdit) {
+        this.product = this.products.find(product => product.id === productId);
+        this.canEdit = canEdit;
+        this.pageTitle = this.product.name;
+        this.showBackArrow = true;
+        this.activeComponent = this.activeComponentsContants.DETAIL;
+    }
 
     async postProduct(product: Product) {
         this.loadingService.updateLoading(true);

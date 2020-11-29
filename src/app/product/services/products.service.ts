@@ -18,7 +18,7 @@ export class ProductsService {
     }
 
     getProducts(): Subscribable<Product[]> {
-        return this.productsCollection.valueChanges()
+        return this.productsCollection.valueChanges({ idField: 'id' })
     }
 
     postProduct(product: Product): Promise<any> {

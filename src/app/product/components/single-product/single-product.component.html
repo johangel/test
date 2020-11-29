@@ -5,7 +5,8 @@
     >
         <div class="left-section">
             <image-file-input
-                [pictureUrl]="product.pictureRef"
+                [canEdit]="canEdit"
+                [pictureUrl]="pictureUrl"
                 (onPictureChanged)="handlePicture($event)"
             ></image-file-input>
         </div>

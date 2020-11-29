@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Product } from './../../models/product.model';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { environment } from './../../../../environments/environment.prod';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 @Component({
     selector: 'single-product',
@@ -25,13 +26,17 @@ export class SingleProductComponent implements OnInit {
 
     pictureUrl: string;
 
-    constructor() { }
+    constructor(public fireStorage: AngularFireStorage) { }
 
     ngOnInit(): void {
         this.setForm();
     }
 
     setForm() {
+        this.fireStorage.ref(this.product.pictureRef).getDownloadURL().subscribe(url => {
+            this.pictureUrl = url;
+        })
+
         this.editProductForm.get('name').setValue(this.product.name)
         this.editProductForm.get('description').setValue(this.product.description)
         this.editProductForm.get('price').setValue(this.product.price)
@@ -43,7 +48,6 @@ export class SingleProductComponent implements OnInit {
             this.editProductForm.disable();
         }
 
-        this.pictureUrl = this.product.pictureRef
     }
 
 

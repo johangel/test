@@ -6,6 +6,7 @@
         "
     />
     <div
+        *ngIf="canEdit"
         (click)="inputFile.click(); $event.stopPropagation()"
         class="input-section"
     >

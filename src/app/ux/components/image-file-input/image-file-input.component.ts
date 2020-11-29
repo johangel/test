@@ -10,6 +10,7 @@ export class ImageFileInputComponent implements OnInit {
     constructor() { }
 
     @Input('pictureUrl') pictureUrl: string;
+    @Input('canEdit') canEdit: boolean;
 
     input;
     @Output('onPictureChanged') onPictureChanged: EventEmitter<string> = new EventEmitter<string>()
