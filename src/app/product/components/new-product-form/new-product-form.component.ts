@@ -38,4 +38,9 @@ export class NewProductFormComponent implements OnInit {
     submitForm() {
         this.onCreateProduct.emit(this.newProductForm.value)
     }
+
+    cleanForm() {
+        this.pictureRef = null;
+        this.newProductForm.reset()
+    }
 }

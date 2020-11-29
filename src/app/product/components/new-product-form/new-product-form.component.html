@@ -60,7 +60,7 @@
                     <mat-error
                         *ngIf="newProductForm.get('price').hasError('required')"
                     >
-                        Nombre es <strong>requerida</strong>
+                        Precio es <strong>requerido</strong>
                     </mat-error>
                 </mat-form-field>
 
@@ -70,13 +70,15 @@
                     <mat-error
                         *ngIf="newProductForm.get('stock').hasError('required')"
                     >
-                        Nombre es <strong>requerida</strong>
+                        Cantidad es <strong>requerida</strong>
                     </mat-error>
                 </mat-form-field>
             </div>
 
             <div class="action-section">
-                <button color="warn" mat-flat-button>Limpiar formulario</button>
+                <button (click)="cleanForm()" color="primary" mat-button>
+                    Limpiar formulario
+                </button>
                 <button
                     (click)="submitForm()"
                     color="primary"

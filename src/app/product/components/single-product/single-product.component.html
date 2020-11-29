@@ -34,7 +34,7 @@
                         editProductForm.get('description').hasError('required')
                     "
                 >
-                    Nombre es <strong>requerida</strong>
+                    Descripción es <strong>requerida</strong>
                 </mat-error>
             </mat-form-field>
 
@@ -63,7 +63,7 @@
                             editProductForm.get('price').hasError('required')
                         "
                     >
-                        Nombre es <strong>requerida</strong>
+                        Precio es <strong>requerido</strong>
                     </mat-error>
                 </mat-form-field>
 
@@ -75,7 +75,7 @@
                             editProductForm.get('stock').hasError('required')
                         "
                     >
-                        Nombre es <strong>requerida</strong>
+                        Cantidad es <strong>requerida</strong>
                     </mat-error>
                 </mat-form-field>
             </div>
@@ -84,7 +84,9 @@
                 <button (click)="deleteProduct()" mat-mini-fab color="warn">
                     <mat-icon>delete</mat-icon>
                 </button>
-                <button color="primary" mat-button>Limpiar formulario</button>
+                <button (click)="cleanForm()" color="primary" mat-button>
+                    Limpiar formulario
+                </button>
                 <button
                     (click)="submitForm()"
                     color="primary"
